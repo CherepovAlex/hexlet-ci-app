@@ -1,17 +1,11 @@
+name: main
+on: push
 jobs:
-  setup: install build
-
-  install:
-    	npm install
-
   build:
-    	npm run build
-
-  start:
-    	npm start
-
-  test:
-    	npm test
-
-  lint:
-	  npx eslint .
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4	
+	- run: make setup
+ 	- run: make test
+  	- run: make lint
