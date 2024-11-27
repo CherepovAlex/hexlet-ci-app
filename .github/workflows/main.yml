@@ -9,15 +9,23 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Install NodeJS >= 18
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
 
-      - name: Build application
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
         run: npm run build
 
-      - name: Start application
+      - name: Start
         run: npm start
 
-      - name: Run tests
+      - name: Test
         run: npm test
 
-      - name: Run linter
+      - name: Lint
         run: npx eslint .
